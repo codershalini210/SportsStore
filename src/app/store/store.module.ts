@@ -5,9 +5,13 @@ import { ModelModule } from "../model/model.module";
 import { Store } from "./store";
 // import { Counter } from './counter';
 import { CounterDirective } from "./counter";
+import { CartSummary } from './cart-summary/cart-summary';
+import { CartDetail } from './cart-detail/cart-detail';
+import { Checkout } from './checkout/checkout';
+import { RouterModule } from "@angular/router";
 @NgModule({
-imports: [ModelModule, BrowserModule, FormsModule,CounterDirective],
-declarations: [Store],
+imports: [ModelModule, BrowserModule, FormsModule,CounterDirective,RouterModule],
+declarations: [Store, CartSummary, CartDetail, Checkout],
 exports: [Store]
 })
 export class StoreModule { }

@@ -4,6 +4,7 @@
 <a class="navbar-brand">SPORTS STORE</a>
 </div>
 </div>
+<app-cart-summary></app-cart-summary>
 <div class="row">
 
 <div class="col-3 p-2">
@@ -29,7 +30,16 @@ Home
 {{ product.price | currency:"USD":"symbol":"2.2-2" }}
 </span>
 </h4>
-<div class="card-text bg-white p-1">{{product.description}}</div>
+
+        <div class="card-text bg-white p-1">{{product.description}}
+          <button class="btn btn-success btn-sm float-right" (click)="addProductToCart(product)">
+            Add To Cart
+          </button>
+        </div>
+    
+
+
+
 </div>
 <div class="form-inline float-left mr-1">
 <select class="form-control" [value]="productsPerPage" (change)="getValue($event)">

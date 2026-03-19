@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Product } from '../model/product.model';
 import { ProductRepository } from '../model/product.repository';
-
+import { Cart } from '../model/cart.model';
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-store',
   standalone: false,
@@ -12,11 +13,18 @@ export class Store {
   public selectedCategory: any = null;
   public productsPerPage = 4;
 public selectedPage = 1;
-constructor(private repository: ProductRepository) { }
+constructor(private repository: ProductRepository,private cart: Cart, private router: Router) { }
 get pageCount(): number {
 return Math.ceil(this.repository
 .getProducts(this.selectedCategory).length / this.productsPerPage)
 }
+
+  addProductToCart(product: Product) {
+    this.cart.addLine(product);
+        this.router.navigateByUrl("/cart");
+  }
+
+
 get products(): Product[] {
   // console.log("instore")
 // console.log(this.repository.getProducts())
