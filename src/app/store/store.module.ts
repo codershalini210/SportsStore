@@ -13,5 +13,6 @@ import { RouterModule } from "@angular/router";
 imports: [ModelModule, BrowserModule, FormsModule,CounterDirective,RouterModule],
 declarations: [Store, CartSummary, CartDetail, Checkout],
 exports: [Store]
+// fgh
 })
 export class StoreModule { }
