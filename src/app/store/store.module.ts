@@ -3,8 +3,10 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { ModelModule } from "../model/model.module";
 import { Store } from "./store";
+// import { Counter } from './counter';
+import { CounterDirective } from "./counter";
 @NgModule({
-imports: [ModelModule, BrowserModule, FormsModule],
+imports: [ModelModule, BrowserModule, FormsModule,CounterDirective],
 declarations: [Store],
 exports: [Store]
 })
