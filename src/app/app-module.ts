@@ -10,7 +10,8 @@ import { CartDetail } from './store/cart-detail/cart-detail';
 import { Checkout } from './store/checkout/checkout';
 // import { CardDetail } from './card-detail/card-detail';
 // import { Store } from './store/store';
-
+// import {StoreFirstGaurd} from" ./storeFirstgaurd"
+import { StoreFirstGuard } from './storeFirst.guard';
 @NgModule({
   declarations: [
     App,
@@ -22,20 +23,24 @@ import { Checkout } from './store/checkout/checkout';
     StoreModule,
         RouterModule.forRoot([
             {
-                path: "store", component: Store
+                path: "store", component: Store,
+                 canActivate: [StoreFirstGuard]
             },
             {
-                path: "cart", component: CartDetail
+                path: "cart", component: CartDetail,
+                 canActivate: [StoreFirstGuard]
             },
             {
-                path: "checkout", component: Checkout
+                path: "checkout", component: Checkout,
+                 canActivate: [StoreFirstGuard]
             },
             { path: "**", redirectTo: "/store" }
         ])],
 
   
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+      StoreFirstGuard,
   ],
   bootstrap: [App]
 })

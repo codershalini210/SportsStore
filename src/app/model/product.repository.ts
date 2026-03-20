@@ -17,8 +17,9 @@ export class ProductRepository {
     }
 
     getProducts(category ?: string): Product[] {
+        console.log("category in getproducts" +category)
         return this.products
-            .filter(p => category == null || category == p.category);
+            .filter(p => category == null|| category==undefined || category == p.category);
     }
 
     getProduct(id: number): Product |undefined{

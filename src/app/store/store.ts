@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
   styleUrl: './store.css',
 })
 export class Store {
-  public selectedCategory: any = null;
+  public selectedCategory: any =undefined;
   public productsPerPage = 4;
 public selectedPage = 1;
 constructor(private repository: ProductRepository,private cart: Cart, private router: Router) { }
@@ -26,7 +26,7 @@ return Math.ceil(this.repository
 
 
 get products(): Product[] {
-  // console.log("instore")
+  console.log("instore")
 // console.log(this.repository.getProducts())
   // return this.repository.getProducts(this.selectedCategory);
   let pageIndex = (this.selectedPage - 1) * this.productsPerPage
@@ -38,8 +38,10 @@ get categories(): (string|undefined)[] {
 return this.repository.getCategories();
 }
 changeCategory(newCategory?: string) {
+  console.log(newCategory)
 this.selectedCategory = newCategory;
 }
+
 changePage(newPage: number) {
 this.selectedPage = newPage;
 }
@@ -60,5 +62,7 @@ this.changePage(1);
 // .fill(0).map((x, i) => i + 1);
 // }
 ngOnInit(): void {
+  
+  this.changeCategory()
 }
 }
