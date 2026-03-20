@@ -1,0 +1,24 @@
+import { Component } from '@angular/core';
+import { Product } from '../../model/product.model';
+import { ProductRepository } from '../../model/product.repository';
+@Component({
+  selector: 'app-product-table',
+  standalone: false,
+  templateUrl: './product-table.html',
+  styleUrl: './product-table.css',
+})
+export class ProductTable {
+  constructor(private repository: ProductRepository) { }
+
+  getProducts(): Product[] {
+    return this.repository.getProducts();
+  }
+
+  deleteProduct(id: number|undefined) {
+    if(id!=undefined)
+    this.repository.deleteProduct(id);
+  }
+  ngOnInit(): void {
+  }
+
+}
